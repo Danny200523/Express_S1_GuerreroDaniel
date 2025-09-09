@@ -1,18 +1,34 @@
-/*
--- DIA 1 --
-*/
-//Importacion de express en variable app
 const express = require('express');
 const app = express();
-
 require('dotenv').config();
-
 app.use(express.json());
-
-//Definir el puerto
 const port = process.env.PORT;
 
-console.log(port)
+
+class Camper{ 
+    constructor(nombre,apellido,direccion,acudiente,celular,curso,riesgo,notaInicial){ 
+        this.nombre = nombre; 
+        this.apellido = apellido; 
+        this.direccion = direccion; 
+        this.acudiente = acudiente; 
+        this.celular = celular; 
+        this.curso = curso; 
+        this.riesgo = riesgo; 
+        this.notaInicial = notaInicial; 
+        this.fechaInicio = new Date(); 
+        this.fechaFin = new Date(this.fechaInicio); 
+        this.fechaFin.setMonth(this.fechaFin.getMonth() + 10);
+    } 
+}
+
+class FuncionesCamper{
+    registroCamper(){
+
+    }
+}
+
+
+
 
 //Ruta principal --> Endpoint
 app.get('/',(req,res)=>{
@@ -20,7 +36,7 @@ app.get('/',(req,res)=>{
 })
 
 app.get('/saludo',(req,res)=>{
-    res.send("otro endpoint care vrg")
+    res.send("otro endpoint")
 })
 
 app.post('/saludo',(req,res)=>{
