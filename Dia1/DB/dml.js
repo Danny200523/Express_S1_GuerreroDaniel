@@ -108,25 +108,51 @@ db.createCollection("trainers", {
   }
 })
 
-db.createCollection("rutas", {
-    validator: {
-      $jsonSchema: {
-        bsonType: "object",
-        required: ["Nombre", "Jornada", "Ruta"],
-        properties: {
-          Nombre: {
-            bsonType: "string",
-            description: "Nombre del trainer (obligatorio)"
-          },
-          Jornada: {
-            enum: ["FullTime"],
-            description: "Jornada laboral del trainer"
-          },
-          Ruta: {
-            enum: ["Java", "NodeJS",".NET"],
-            description: "Ruta de formación asignada al trainer"
-          }
-        }
-      }
+
+
+  
+
+const Rutas	={
+    Java : {
+        Intro : [],
+        Python : [],
+        HtmlCss : [],
+        Scrum : [],
+        Git : [],
+        Javascript : [],
+        IntroBack : [],
+        IntroBBDD : [],
+        MySQL : [],
+        Java : [],
+        PostgreSQL : [],
+        SpringBoot : []
+    },
+    NodeJS : {
+        Intro : [],
+        Python : [],
+        HtmlCss : [],
+        Scrum : [],
+        Git : [],
+        Javascript1 : [],
+        IntroBack : [],
+        IntroBBDD : [],
+        MongoDB : [],
+        Javascript2 : [],
+        MySQL : [],
+        Express : []
+    },
+    ".NET" : {
+        Intro : [],
+        Python : [],
+        HtmlCss : [],
+        Scrum : [],
+        Git : [],
+        Javascript : [],
+        IntroBack : [],
+        IntroBBDD : [],
+        MySQL : [],
+        "C##" : [],
+        PostgreSQL : [],
+        NetCor : []
     }
-})
+}

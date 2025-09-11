@@ -52,9 +52,10 @@ app.get('/mensaje',(req,res)=>{
 
 //Rta con parametro
 
-app.get('/parametro/:nombre',(req,res)=>{
-    const nombre = req.params.nombre;
+app.get('/parametro/:id_ingresado',(req,res)=>{
+    const nombre = req.params.id_ingresado;
     res.send(`Hola ${nombre}`);
+    db.colection('campers').find({_id:nombre})
 })
 
 //Ruta post que recibe un json
@@ -69,3 +70,23 @@ app.listen(port,()=>{
     console.log('Servidor Iniciado!');
 })
 
+
+
+const rutas = {
+    Java : {
+        intro : [
+
+        ],
+        python : [
+        
+        ]
+    },
+    NodeJS :{
+        intro : [
+
+        ],
+        python : [
+            
+        ]
+    }
+}
