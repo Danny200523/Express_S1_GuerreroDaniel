@@ -6,9 +6,22 @@ export class UserController{
     create = async (req,res)=>{
         const user = await this.service.createUser(req.body);
         res.json();
+        return res.send(user)
     };
-    list = async (req,res)=>{};
-    get = async (req,res)=>{};//Obtener por ID desde el EndPoint
-    update = async (req,res)=>{};
-    delete = async (req,res)=>{};
+    list = async (req,res)=>{
+        const user = await this.service.listUser();
+        return res.send(user)
+    };
+    get = async (req,res)=>{
+        const user = await this.service.getUserById(req.params.id);
+        return res.send(user);
+    };//Obtener por ID desde el EndPoint
+    update = async (req,res)=>{
+        const user = await this.service.updateUserById(req.params.id,req.body);
+        res.json()
+    };
+    delete = async (req,res)=>{
+        const user = await this.service.deleteUserById(req.params.id);
+        return res.send(user)
+    };
 }
