@@ -2,7 +2,7 @@ export class UserRepository{
     constructor(userModel){
         this.User = userModel
     }
-    async create(data){
+    async createOne(data){
         return this.User.create(data);
     }
     async findAll(){
@@ -16,8 +16,5 @@ export class UserRepository{
     }
     async deleteById(id){
         return this.User.findByIdAndDelete(id);
-    }
-    async findByEmail(email){
-        return this.User.findOne({email});
     }
 }

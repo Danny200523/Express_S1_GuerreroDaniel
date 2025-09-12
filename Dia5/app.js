@@ -18,8 +18,8 @@ class App{
         this.db = new DataBase(process.env.MONGODB_URI);
     }
     async init(){
-        await this.db.connect;
-        this.app.use(express.json());//middleware para JSON
+        await this.db.connect();
+        this.app.use(express.json());
         this.app.get('/', (req,res)=>{
             res.json({
                 ok:true,
