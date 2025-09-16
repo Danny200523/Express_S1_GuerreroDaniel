@@ -10,18 +10,17 @@ export default class UserModel{
     // El constructor, lo que se ejecuta al crear un chisme de estos
     constructor(db){
         // Se crea el cliente de mongo con la dirección de la base de datos que está en el .env
-        this.client = new MongoClient(process.env.MONGO_URI);
+        this.client = new MongoClient(process.env.MONGODB_URI)
         // El nombre de la base de datos, que también está en el .env
         this.dbName = process.env.MONGO_DB;
     }
 
     // Función para conectarse a la base de datos, si ya está conectado, no hace el tonto y se queda como está
     async connect(){
-
-        if (db) return db; // Si ya hay conexión, la devuelve y a correr
-        await this.client.connect(); // Si no, se conecta
-        db = client.db(this.dbName); // Selecciona la base de datos
-        return db.collection("users"); // Y devuelve la colección de usuarios, que es donde está el lío
+        if(!this.client.topology?.isConnected()){
+            await this.client.connect();
+        }
+        return this.client.db(this.dbName).collection("users")
     }
 
     // Para crear un usuario nuevo, le pasas los datos y lo escupe en la base de datos

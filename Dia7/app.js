@@ -2,3 +2,12 @@
 //  información de forma segura entre partes como un objeto JSON. Esta información se puede verificar y confiar 
 // porque está firmada digitalmente.
 
+import express from "express";
+import dotenv from "dotenv";
+dotenv.config();
+import router from "./views/userRoutes.js";
+
+const app = express();
+app.use(express.json());
+
+app.use('/api/user',router);
